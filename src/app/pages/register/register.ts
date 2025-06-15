@@ -17,7 +17,17 @@ export class Register {
   constructor(private router: Router, private authService: AuthenticationService) { }
 
   register(): void {
-
+    this.errorMsg = [];
+    this.authService.register({
+      body: this.registerRequest
+    }).subscribe({
+      next: ()=>{
+        this.router.navigate(['activate-account']);
+      },
+      error: (err) =>{
+        this.errorMsg = err.error.validationErrors;
+      }
+    })
   }
 
   login(): void {
