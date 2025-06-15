@@ -10,14 +10,22 @@ import { CodeInputModule } from 'angular-code-input';
   styleUrl: './activate-account.scss'
 })
 export class ActivateAccount {
+  redirectToLogin() {
+    this.router.navigate(['login']);
+  }
   message: string = '';
   isOk: boolean = true;
   submitted: boolean = false;
 
   constructor(private router: Router, private authService: AuthenticationService) { }
 
-  onCodeCompleted(token: string):  boolean {
-    return false;
+  onCodeCompleted(token: string): void {
+    this.confirmAccount(token);
+  }
+  confirmAccount(token: string):void {
+    this.authService.confirm({
+      token
+    });
   }
 
 }
