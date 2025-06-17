@@ -1,0 +1,10 @@
+<h3>Books list</h3>
+<hr>
+<div class="d-flex justify-content-start gap-2 flex-wrap">
+    @for(book of bookResponse.content; track book){
+        <p>{{book.title}}</p>
+    } @empty {
+        <p>There are no books</p>
+    }   
+    
+</div>
