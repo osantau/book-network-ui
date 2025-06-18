@@ -1,8 +1,8 @@
 <h3>Books list</h3>
 <hr>
 <div class="d-flex justify-content-start gap-2 flex-wrap">
-    @for(book of bookResponse.content; track book){
-        <p>{{book.title}}</p>
+    @for(book of bookResponse.content; track book.id){
+        <app-book-card [book]="book"></app-book-card>
     } @empty {
         <p>There are no books</p>
     }   

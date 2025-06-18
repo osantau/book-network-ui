@@ -14,4 +14,5 @@ export interface BookResponse {
   shareable?: boolean;
   synopsis?: string;
   title?: string;
+  imgBase64?: string;
 }
