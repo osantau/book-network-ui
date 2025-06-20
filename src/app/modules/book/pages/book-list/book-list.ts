@@ -12,7 +12,7 @@ import { BookCard } from '../../components/book-card/book-card';
 })
 export class BookList implements OnInit {
   page = 0;
-  size = 5;
+  size = 2;
   bookResponse: PageResponseBookResponse={};
 
   constructor(private bookService: BookService, private router: Router) { }

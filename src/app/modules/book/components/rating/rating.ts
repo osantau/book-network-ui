@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-rating',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './rating.html',
   styleUrl: './rating.scss'
 })
@@ -18,7 +19,7 @@ export class Rating {
   get halfStar(): boolean {
     return this.rating % 1 !== 0;
   }
-  get emptyStart(): number {
+  get emptyStars(): number {
     return this.maxRating - Math.ceil(this.rating);
   }
 }
