@@ -1,8 +1,17 @@
 <h3>Books list</h3>
+<div
+  *ngIf="message"
+  class="alert "
+  [class.alert-danger]="level==='error'"
+  [class.alert-success]="level==='success'"
+  role="alert"
+>
+{{message}}
+</div>
 <hr>
 <div class="d-flex justify-content-start gap-2 flex-wrap">
     @for(book of bookResponse.content; track book.id){
-    <app-book-card [book]="book"></app-book-card>
+    <app-book-card [book]="book" (borrow)="borrowBook($event)"></app-book-card>
     } @empty {
     <p>There are no books</p>
     }

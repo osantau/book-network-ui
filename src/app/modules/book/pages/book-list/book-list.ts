@@ -12,6 +12,23 @@ import { CommonModule } from '@angular/common';
   styleUrl: './book-list.scss'
 })
 export class BookList implements OnInit {
+  public message: string='';
+  level: string='success';
+
+borrowBook(book: BookResponse) {
+  this.message='';
+this.bookService.borrowBook({'book-id': book.id as number}).subscribe({
+  next: () =>{
+    this.level='success';
+    this.message = 'Book successfully added to your list';
+  },
+  error:(err):void=>{
+    
+    this.level='error';
+    this.message=err.error.error;
+  }
+});
+}
 
   goToLastPage() {
     this.page=this.bookResponse.totalPages as number - 1 ;
