@@ -1,0 +1,35 @@
+import { Component } from '@angular/core';
+import { AuthenticationRequest } from '../../services/models';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import {authenticate, Authenticate$Params} from '../../services/fn/authentication/authenticate';
+import { ApiConfiguration } from '../../services/api-configuration';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+  selector: 'app-login',
+  imports: [FormsModule],
+  templateUrl: './login.html',
+  styleUrl: './login.scss',
+})
+export class Login {
+  authRequest: AuthenticationRequest = { email: '', password: '' };
+  errorMsg: Array<string> = [];
+
+  constructor(private router: Router, private config: ApiConfiguration,private http: HttpClient) { }
+
+  login() {
+    this.errorMsg = [];
+    const loginParams: Authenticate$Params = { body: this.authRequest };
+    authenticate(this.http, this.config.rootUrl, loginParams).subscribe({
+      next: (response) => {
+        console.log(response);
+  },error: (err) => {
+        console.log(err);
+        this.errorMsg.push('Login failed. Please check your credentials and try again.');
+      }});
+  }
+  register() {
+    this.router.navigate(['register']);
+  }
+}
