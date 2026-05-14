@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.activat-message,.activate-error{
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.activate-error{
+    color: red;
+}
