@@ -21,7 +21,7 @@ this.findAllBooks();
 }
   bookResponse: PageResponseBookResponse={};
   page: number = 1;
-  size: number = 10;
+  size: number = 2;
 
 
   constructor(private router: Router,private config: ApiConfiguration,private http: HttpClient,) { }
