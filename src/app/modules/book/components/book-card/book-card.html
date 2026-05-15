@@ -11,7 +11,7 @@
   </div>
   <div class="card-footer d-flex gap-2 justify-content-between align-items-center">
     <div class="d-flex gap-2">
-      5-stars
+      <app-rating [rating]="book.rate??0"></app-rating>
     </div>
     @if(!_manage) {
     <div class="d-flex gap-2">
