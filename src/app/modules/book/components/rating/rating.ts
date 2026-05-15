@@ -12,13 +12,13 @@ export class Rating {
   rating: number = 0;
   maxRating: number = 5;
 
-  getFullStars(): number {
+  fullStars(): number {
     return Math.floor(this.rating);
   }
-  getHalfStar(): boolean {
-    return this.rating % 1!=0
+  hasHalfStar(): boolean {
+    return this.rating % 1 != 0
   }
-  getEmptyStars(): number {
-    return this.maxRating -  Math.ceil(this.rating);
+  emptyStars(): number {
+    return this.maxRating - Math.ceil(this.rating);
   }
 }
