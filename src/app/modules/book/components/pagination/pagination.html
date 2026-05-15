@@ -1,11 +1,11 @@
 <nav class="pagination-container">
   <!-- First Button -->
   <button [disabled]="currentPage() === 1" (click)="selectPage(1)">
-    First
+    <i class="fas fa-angle-double-left"></i>
   </button>
   <!-- Previous Button -->
   <button [disabled]="currentPage() === 1" (click)="selectPage(currentPage() - 1)">
-    Previous
+    <i class="fas fa-angle-left"></i>
   </button>
 
   <!-- Page Numbers -->
@@ -19,10 +19,10 @@
 
   <!-- Next Button -->
   <button [disabled]="currentPage() === totalPages()" (click)="selectPage(currentPage() + 1)">
-    Next
+    <i class="fas fa-angle-right"></i>
   </button>
   <!-- Last Button -->
   <button [disabled]="currentPage() === totalPages()" (click)="selectPage(totalPages())">
-    Last
+    <i class="fas fa-angle-double-right"></i>
   </button>
 </nav>
