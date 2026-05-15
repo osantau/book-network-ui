@@ -2,7 +2,7 @@
 <hr>
 <div class="d-flex justify-content-start gap-2 flex-wrap">
   @for (book of bookResponse.content; track book.id) {
-    <p>{{book.title}}</p>
+    <app-book-card [_book]="book"></app-book-card>
   } @empty {
   <p>No books found.</p>
   }
