@@ -1,0 +1,26 @@
+<nav class="pagination-container">
+  <!-- Previous Button -->
+  <button
+    [disabled]="currentPage() === 1"
+    (click)="selectPage(currentPage() - 1)">
+    Previous
+  </button>
+
+  <!-- Page Numbers -->
+  <div class="page-numbers">
+    @for (page of pages(); track page) {
+      <button
+        [class.active]="page === currentPage()"
+        (click)="selectPage(page)">
+        {{ page }}
+      </button>
+    }
+  </div>
+
+  <!-- Next Button -->
+  <button
+    [disabled]="currentPage() === totalPages()"
+    (click)="selectPage(currentPage() + 1)">
+    Next
+  </button>
+</nav>

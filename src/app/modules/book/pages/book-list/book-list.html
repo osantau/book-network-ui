@@ -7,3 +7,9 @@
   <p>No books found.</p>
   }
 </div>
+<app-pagination
+  [totalItems]="bookResponse.totalElements??0"
+  [pageSize]="size"
+  [(currentPage)]="page"
+  (pageChange)="onPageChange($event)">
+</app-pagination>

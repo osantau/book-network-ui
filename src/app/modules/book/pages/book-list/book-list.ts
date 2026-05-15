@@ -5,17 +5,23 @@ import { ApiConfiguration } from '../../../../services/api-configuration';
 import { HttpClient } from '@angular/common/http';
 import { PageResponseBookResponse } from '../../../../services/models/page-response-book-response';
 import { BookCard } from "../../components/book-card/book-card";
+import { Pagination } from "../../components/pagination/pagination";
 
 @Component({
   selector: 'app-book-list',
-  imports: [BookCard],
+  imports: [BookCard, Pagination],
   templateUrl: './book-list.html',
   styleUrl: './book-list.scss',
 })
 export class BookList implements OnInit {
+onPageChange(newPage: number) {
+
+this.page = newPage;
+this.findAllBooks();
+}
   bookResponse: PageResponseBookResponse={};
-  private page: number = 0;
-  private size: number = 10;
+  page: number = 1;
+  size: number = 10;
 
 
   constructor(private router: Router,private config: ApiConfiguration,private http: HttpClient,) { }
@@ -24,9 +30,9 @@ export class BookList implements OnInit {
     this.findAllBooks();
   }
 
-  private findAllBooks() {
+  findAllBooks() {
     const params: FindAllBooks$Params = {
-      page: this.page,
+      page: this.page-1,
       size: this.size
     };
 
