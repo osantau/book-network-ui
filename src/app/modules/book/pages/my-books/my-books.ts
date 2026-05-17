@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ApiConfiguration } from '../../../../services/api-configuration';
 import { HttpClient } from '@angular/common/http';
 import { PageResponseBookResponse } from '../../../../services/models/page-response-book-response';
@@ -11,7 +11,7 @@ import { borrwedBook, BorrwedBook$Params } from '../../../../services/functions'
 
 @Component({
   selector: 'app-my-books',
-  imports: [BookCard, Pagination],
+  imports: [BookCard, Pagination,RouterLink],
   templateUrl: './my-books.html',
   styleUrl: './my-books.scss',
 })
@@ -32,7 +32,7 @@ throw new Error('Method not implemented.');
   }
   bookResponse: PageResponseBookResponse = {};
   page: number = 1;
-  size: number = 2;
+  size: number = 10;
 
   constructor(private router: Router, private config: ApiConfiguration, private http: HttpClient,) { }
 

@@ -24,7 +24,7 @@ export class BookList implements OnInit {
   }
   bookResponse: PageResponseBookResponse = {};
   page: number = 1;
-  size: number = 2;
+  size: number = 10;
   message: string = '';
   level: string = 'success';
 
