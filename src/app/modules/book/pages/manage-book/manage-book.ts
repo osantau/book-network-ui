@@ -42,10 +42,11 @@ export class ManageBook {
     const saveBookParams: SaveBook$Params = { body: this.bookRequest };
     saveBook(this.http, this.apiConfig.rootUrl, saveBookParams).subscribe({
       next: (savedBookId) => {
+        const imageBlob = this.dataURLtoBlob(this.selectedPicture);
         const uploadBookCoverPictureParams: UploadBookCoverPicture$Params = {
           'book-id': savedBookId.body as number,
           body: {
-            'file': new File([this.selectedPicture], 'book-cover.jpg',{ type: 'image/jpeg', lastModified: Date.now() })
+            'file': new File([imageBlob], 'book-cover.jpg',{ type: 'image/jpeg', lastModified: Date.now() })
           }
         };
         uploadBookCoverPicture(this.http, this.apiConfig.rootUrl, uploadBookCoverPictureParams).subscribe({
@@ -58,4 +59,17 @@ export class ManageBook {
       }
     });
   }
+  // Helper Method to handle the conversion
+dataURLtoBlob(dataURI: string): Blob {
+  // Split the base64 string to get only the data part
+  const byteString = atob(dataURI.split(',')[1]);
+  const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+  const ab = new ArrayBuffer(byteString.length);
+  const ia = new Uint8Array(ab);
+  for (let i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
+  }
+  return new Blob([ab], { type: mimeString });
+}
 }
